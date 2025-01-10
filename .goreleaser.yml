@@ -38,8 +38,8 @@ dockers:
 
     # Templates of the Docker image names.
     image_templates:
-      - "ghcr.io/mr-karan/alertmatter:{{ .Tag }}"
-      - "ghcr.io/mr-karan/alertmatter:latest"
+      - "ghcr.io/pandino/alertmatter:{{ .Tag }}"
+      - "ghcr.io/pandino/alertmatter:latest"
 
     # Skips the docker push.
     # Could be useful if you also do draft releases.

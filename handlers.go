@@ -144,6 +144,26 @@ func handleAlert(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 }
 
+// handleLiveness responds to liveness probe requests.
+func handleLiveness(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
+		return
+	}
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte("Liveness probe OK"))
+}
+
+// handleReadiness responds to readiness probe requests.
+func handleReadiness(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
+		return
+	}
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte("Readiness probe OK"))
+}
+
 func setColor(status string) string {
 	switch status {
 	case "firing":
